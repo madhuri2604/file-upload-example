@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    fetch('https://northamerica-northeast1-training-391108.cloudfunctions.net/function-12', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => {
+        // Handle response
+      })
+      .catch((error) => {
+        // Handle error
+      });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Upload Your File Here</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input type="file" name="file" />
+          <br /><br />
+          <input type="submit" value="Upload" />
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;
