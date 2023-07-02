@@ -5,7 +5,7 @@ class App extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch('https://northamerica-northeast1-training-391108.cloudfunctions.net/function-12', {
+    fetch('https://us-central1-training-391108.cloudfunctions.net/function-1', {
       method: 'POST',
       body: formData,
     })
